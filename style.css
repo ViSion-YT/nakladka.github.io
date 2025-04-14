@@ -1,0 +1,347 @@
+:root {
+    /* Domyślne kolory dla Nakładki 2 - można je zmieniać przez JS */
+    --nick-bg-color-l2: #2a2a2a;
+    --nick-text-color-l2: #ffffff;
+    --elo-text-color-l2: #cccccc;
+    --wl-text-color-l2: #bbbbbb;
+}
+
+
+body {
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 20px;
+}
+
+.controls {
+    background-color: #444;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 15px;
+    align-items: center;
+}
+
+.controls label {
+    margin-right: 5px;
+}
+
+.controls input[type="text"] {
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.controls button {
+    padding: 8px 15px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.controls button:hover {
+    background-color: #4cae4c;
+}
+
+.controls fieldset {
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0; /* Reset default margin */
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.controls fieldset legend {
+    padding: 0 5px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+.controls input[type="color"] {
+    width: 30px;
+    height: 20px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    vertical-align: middle; /* Align with text */
+}
+
+#status {
+    width: 100%; /* Take full width in wrap layout */
+    margin-top: 5px;
+    font-style: italic;
+    color: #ffcc00;
+}
+
+/* --- Wspólne style dla nakładek --- */
+.overlay-variant {
+    position: relative;
+    background-image: url("images/banerstronamonochromat.png");
+    background-color: #1e1e1e;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 550px;
+    border: 1px solid #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.overlay-variant::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9); /* Stopień przyciemnienia */
+    backdrop-filter: blur(3px);
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.overlay-variant > * {
+    position: relative;
+    z-index: 1; /* Treść na wierzchu */
+}
+
+.overlay-variant.hidden {
+    display: none;
+}
+
+
+/* --- Style dla Nakładki 1 (level_1 - Podstawowa) --- */
+#overlayLevel1 {
+    /* Juz zdefiniowane w .overlay-variant */
+}
+
+.level-container-l1 {
+    /* Kontener na sam obrazek poziomu */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+#levelIconL1 {
+    width: 140px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 50%; /* Zaokrąglenie samego obrazka, jeśli nie jest idealnie kołem */
+    border:1mm solid #3a3a3a;
+}
+
+
+.player-info-l1 {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.username-l1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.elo-l1 {
+    font-size: 16px;
+    color: #cccccc;
+}
+/* Zmiana ELO (+/-) nie jest częścią tej nakładki */
+
+
+.stats-l1 {
+    display: flex;
+    gap: 10px;
+}
+
+.wins-box-l1, .losses-box-l1 {
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 60px;
+}
+
+.wins-box-l1 {
+    background-color: #1a4d2e;
+    border: 1px solid #2ecc71;
+}
+
+.losses-box-l1 {
+    background-color: #6a040f;
+    border: 1px solid #e74c3c;
+}
+
+.stat-value-l1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.stat-label-l1 {
+    font-size: 12px;
+    color: #bbbbbb;
+}
+
+
+/* --- Style dla Nakładki 2 (level_2 - Statystyki) --- */
+#overlayLevel2 {
+    /* Style bazowe z .overlay-variant */
+    gap: 20px; /* Większy odstęp */
+    padding: 15px 20px;
+}
+
+.level-container-l2 {
+    width: 90px; /* Nieco większa ikona */
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+#levelIconL2 {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.player-data-l2 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Elementy jeden pod drugim */
+    gap: 5px;
+}
+
+.username-l2 {
+    font-size: 26px; /* Nieco mniejszy niż L1 */
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--nick-bg-color-l2); /* Użycie zmiennej CSS */
+    color: var(--nick-text-color-l2);       /* Użycie zmiennej CSS */
+    text-align: center; /* Wyśrodkowany nick */
+}
+
+#eloContainerL2 {
+    text-align: center;
+}
+
+.elo-l2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--elo-text-color-l2); /* Użycie zmiennej CSS */
+}
+
+.elo-change-l2 {
+    font-size: 16px;
+    margin-left: 8px;
+    font-style: italic;
+}
+.elo-change-l2.positive {
+    color: #2ecc71; /* Green for positive change */
+}
+.elo-change-l2.negative {
+    color: #e74c3c; /* Red for negative change */
+}
+.elo-change-l2.zero {
+    color: #aaa; /* Grey for no change */
+}
+
+
+.wl-l2 {
+    font-size: 16px;
+    text-align: center;
+    color: var(--wl-text-color-l2); /* Użycie zmiennej CSS */
+}
+.wl-l2 span {
+    font-weight: bold;
+}
+
+.subskrybcja{
+    font-size: 16px;
+    color: #4cae4c;
+}
+.subskrybcja.button{
+    font-size: 16px;
+    color: #4cae4c;
+    border-radius: 10px;
+}
+
+
+.reklama-lunaris {
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    border: 1px solid #3a3a3a;
+    padding: 20px 30px;
+    border-radius: 12px;
+    max-width: 100%;
+    margin-top: 5%;
+    overflow: hidden;
+    box-shadow: 0 0 18px rgba(0, 255, 100, 0.2);
+}
+
+.marquee-container {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-text {
+    display: inline-block;
+    padding-left: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4cae4c;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+
+
+
+.marquee-editor {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+
+
+
+
+
+
+
+
+

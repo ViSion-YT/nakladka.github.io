@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nakładka Faceit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="controls">
+    <label for="nicknameInput">Nick Faceit:</label>
+    <input type="text" id="nicknameInput" placeholder="Wpisz nick">
+    <button id="fetchButton">Pobierz Staty</button>
+
+    <fieldset>
+      <legend>Wybierz Nakładkę:</legend>
+      <label>
+        <input type="radio" name="overlayType" value="level_1" checked> Level 1 (Podstawowa)
+      </label>
+      <label>
+        <input type="radio" name="overlayType" value="level_2"> Level 2 (Statystyki)
+      </label>
+    </fieldset>
+
+    <fieldset id="colorCustomization" style="display: none;">
+      <legend>Dostosuj Kolory (Level 2):</legend>
+      <label>Tło Nicku: <input type="color" id="colorNickBg" value="#2a2a2a"></label>
+      <label>Kolor Nicku: <input type="color" id="colorNickText" value="#ffffff"></label>
+      <label>Kolor ELO: <input type="color" id="colorEloText" value="#cccccc"></label>
+      <label>Kolor W/L: <input type="color" id="colorWLText" value="#bbbbbb"></label>
+    </fieldset>
+
+    <p id="status"></p>
+  </div>
+
+  <section class="subskrybcja">
+    <h2>SUBSKRYBCJA 49.99zł</h2>
+    <button>kup</button>
+  </section>
+
+  <!-- Nakładka 1 -->
+  <div id="overlayLevel1" class="overlay overlay-variant">
+    <div class="level-container-l1">
+      <img id="levelIconL1" src="images/1.png" alt="Level">
+    </div>
+    <div class="player-info-l1">
+      <div id="usernameL1" class="username-l1">nickname</div>
+      <div id="eloL1" class="elo-l1">0 ELO</div>
+    </div>
+    <div class="stats-l1">
+      <div class="wins-box-l1">
+        <div id="winsL1" class="stat-value-l1">0</div>
+        <div class="stat-label-l1">WINS</div>
+      </div>
+      <div class="losses-box-l1">
+        <div id="lossesL1" class="stat-value-l1">0</div>
+        <div class="stat-label-l1">LOSSES</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nakładka 2 -->
+  <div id="overlayLevel2" class="overlay overlay-variant hidden">
+    <div class="level-container-l2">
+      <img id="levelIconL2" src="images/1.png" alt="Level">
+    </div>
+    <div class="player-data-l2">
+      <div id="usernameL2" class="username-l2">NICKNAME</div>
+      <div id="eloContainerL2">
+        <span id="eloL2" class="elo-l2">0 ELO</span>
+        <span id="eloChangeL2" class="elo-change-l2">(+/-?)</span>
+      </div>
+      <div id="wlContainerL2" class="wl-l2">
+        <span id="winsL2">0</span> W / <span id="lossesL2">0</span> L
+      </div>
+    </div>
+  </div>
+
+  <!-- Pasek reklamowy -->
+  <section class="reklama-lunaris">
+    <div class="marquee-container">
+      <p class="marquee-text" id="marqueeText">
+        SPARING LUNARIS YOUTH | LUNARIS YOUTH VS LUNACY GAMING | JUŻ DZIŚ 19:00!
+      </p>
+    </div>
+  </section>
+
+  <!-- Edytor tekstu reklamowego -->
+  <div class="controls marquee-editor">
+    <label for="marqueeInput">Własny tekst paska:</label>
+    <input type="text" id="marqueeInput" placeholder="Wpisz własny tekst...">
+
+    <label for="presetSelect">lub wybierz z listy:</label>
+    <select id="presetSelect" onchange="applyPreset()">
+      <option value="">-- Wybierz gotowy tekst --</option>
+      <option value="SPARING LUNARIS YOUTH | LUNARIS YOUTH VS LUNACY GAMING | JUŻ DZIŚ 19:00!">Sparing Lunaris vs Lunacy</option>
+      <option value="VI$ION — ZAWODNIK LUNARIS YOUTH | FOLLOW NA TWITCHU | #LUNARISYOUTH">vi$ion — zawodnik Lunaris Youth</option>
+      <option value="DOŁĄCZ DO NAS! | TWITCH.TV/VISION | CODZIENNIE MECZE CS2 NA ŻYWO">Promocja kanału Twitch</option>
+      <option value="NOWY NABÓR DO LUNARIS YOUTH | ZGŁOŚ SIĘ JUŻ TERAZ!">Nabór do drużyny</option>
+    </select>
+
+    <button onclick="updateMarquee()">Zmień tekst</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
